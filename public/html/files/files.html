@@ -1,0 +1,71 @@
+<div class="panel panel-primary" style="margin-top:48px;">
+    <div class="panel-heading">
+        <h3 class="panel-title">文件列表</h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-inline">
+            <div class="form-group">
+                <button type="button" class="btn btn-success" v-on:click="upload"><span class="glyphicon glyphicon-upload"></span>上传</button>
+            </div>
+            <div class="form-group">
+                <label class="control-label">选择需要展示的字段:</label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">文件名
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">类型
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox">数量
+                </label>
+            </div>
+        </form>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>文件名</th>
+                <th>类型</th>
+                <th>数量</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>excel.xlsx</td>
+                <td>excel</td>
+                <td>3</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <input type="file" name="files[]" multiple id="fileupload">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" v-bind:style="{width:progres}">
+                        {{progres}}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
