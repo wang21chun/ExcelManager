@@ -10,19 +10,9 @@
             <div class="form-group">
                 <label class="control-label">选择需要展示的字段:</label>
             </div>
-            <div class="checkbox">
+            <div class="checkbox" v-for="(k,v) in dataHead">
                 <label>
-                    <input type="checkbox">文件名
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox">类型
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox">数量
+                    <input type="checkbox" value="{{k}}" v-model="dataHeadShow[k]">{{v}}
                 </label>
             </div>
         </form>
@@ -30,41 +20,27 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>编号</th>
-                <th>被探测设备的MAC地址</th>
-                <th>被探测设备的类型</th>
-                <th>信号强度</th>
-                <th>信道</th>
-                <th>报文类型</th>
-                <th>报文计数</th>
-                <th>报文计数</th>
-                <th>报文计数</th>
-                <th>报文计数</th>
-                <th>开始时间</th>
-                <th>结束时间</th>
-                <th>记录开始</th>
-                <th>记录结束</th>
-                <th>设备的ＭＡＣ地址</th>
-
+                <th v-for="(k,v) in dataHead" v-show="dataHeadShow[k]">{{v}}</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="data in datas">
-                <td>{{data.id}}</td>
-                <td>{{data.mac}}</td>
-                <td>{{data.Mode}}</td>
-                <td>{{data.RSSI}}</td>
-                <td>{{data.Channel}}</td>
-                <td>{{data.PktType}}</td>
-                <td>{{data.FMgt}}</td>
-                <td>{{data.Fctl}}</td>
-                <td>{{data.Fdata}}</td>
-                <td>{{data.FMagic}}</td>
-                <td>{{data.stime | format}}</td>
-                <td>{{data.etime | format}}</td>
-                <td>{{data.slocal | format}}</td>
-                <td>{{data.elocal | format}}</td>
-                <td>{{data.dmac}}</td>
+                <!-- <td v-for="(k, v) in data">{{v}}</td> -->
+                <td v-show="dataHeadShow.id">{{data.id}}</td>
+                <td v-show="dataHeadShow.mac">{{data.mac}}</td>
+                <td v-show="dataHeadShow.Mode">{{data.Mode}}</td>
+                <td v-show="dataHeadShow.RSSI">{{data.RSSI}}</td>
+                <td v-show="dataHeadShow.Channel">{{data.Channel}}</td>
+                <td v-show="dataHeadShow.PktType">{{data.PktType}}</td>
+                <td v-show="dataHeadShow.FMgt">{{data.FMgt}}</td>
+                <td v-show="dataHeadShow.Fctl">{{data.Fctl}}</td>
+                <td v-show="dataHeadShow.Fdata">{{data.Fdata}}</td>
+                <td v-show="dataHeadShow.FMagic">{{data.FMagic}}</td>
+                <td v-show="dataHeadShow.stime">{{data.stime | format}}</td>
+                <td v-show="dataHeadShow.etime">{{data.etime | format}}</td>
+                <td v-show="dataHeadShow.slocal">{{data.slocal | format}}</td>
+                <td v-show="dataHeadShow.elocal">{{data.elocal | format}}</td>
+                <td v-show="dataHeadShow.dmac">{{data.dmac}}</td>
             </tr>
         </tbody>
     </table>
