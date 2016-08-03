@@ -5,7 +5,8 @@ define(['text!filesHtml'], function(_filesHtml) {
             data: function() {
                 return {
                     progres:'0%',
-                    datas:[]
+                    datas:[],
+                    number:0
 
                 };
             },
@@ -15,6 +16,9 @@ define(['text!filesHtml'], function(_filesHtml) {
                     $('#fileupload').fileupload({
                         url: '/upload',
                         type: 'POST',
+                        start:function(e){
+                            console.log(++_this.number);
+                        },
                         done: function(e, data) {
                             $.each(data.result, function(index, file) {
                                 
@@ -22,6 +26,7 @@ define(['text!filesHtml'], function(_filesHtml) {
                         },
                         progressall: function(e, data) {
                             var progress = parseInt(data.loaded / data.total * 100, 10);
+                            console.log(progress);
                             _this.$set('progres',progress+"%");
                         },
                         success:function(data){
