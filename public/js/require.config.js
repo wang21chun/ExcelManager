@@ -14,7 +14,8 @@ require.config({
     	'files':'js/files/files',
     	'jquery.form':'lib/jquery/jquery.form',
     	'jquery.fileupload':'lib/jquery/jquery.fileupload',
-    	'jquery.ui.widget':'lib/jquery/jquery.ui.widget'
+    	'jquery.ui.widget':'lib/jquery/jquery.ui.widget',
+        'date-format':'js/filter/date'
     },
     map: {
         '*': {

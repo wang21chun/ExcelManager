@@ -4,7 +4,9 @@ define(['text!filesHtml'], function(_filesHtml) {
             template: _filesHtml,
             data: function() {
                 return {
-                    progres:'0%'
+                    progres:'0%',
+                    datas:[]
+
                 };
             },
             methods: {
@@ -15,7 +17,7 @@ define(['text!filesHtml'], function(_filesHtml) {
                         type: 'POST',
                         done: function(e, data) {
                             $.each(data.result, function(index, file) {
-                                console.log(file);
+                                
                             });
                         },
                         progressall: function(e, data) {
@@ -23,7 +25,7 @@ define(['text!filesHtml'], function(_filesHtml) {
                             _this.$set('progres',progress+"%");
                         },
                         success:function(data){
-
+                            _this.datas = data;
                         }
                     });
                     $('#myModal').modal('show');

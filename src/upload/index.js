@@ -5,6 +5,7 @@ var path = require('path');
 var util = require("../util/index");
 var basePath = path.join(process.cwd(), "files/");
 var async = require('async');
+var parseCsv = require('../core/csv');
 
 module.exports = function(req, res, cb) {
     var form = new multiparty.Form();
@@ -24,7 +25,7 @@ module.exports = function(req, res, cb) {
         });
         async.parallel(parallelTask, function(err, results) {
             if (err) console.log(err);
-            cb(results);
+            parseCsv(results[0], cb);
         });
     });
 };
@@ -42,7 +43,7 @@ function waterfallTask(fromFilePath, toPath) {
             encoding: "utf8"
         }, function(err) {
             if (err) callback(err);
-            callback(null,toPath);
+            callback(null, toPath);
         });
     });
     return waterfallTask;

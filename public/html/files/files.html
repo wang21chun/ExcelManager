@@ -30,18 +30,41 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>文件名</th>
-                <th>类型</th>
-                <th>数量</th>
-                <th>操作</th>
+                <th>编号</th>
+                <th>被探测设备的MAC地址</th>
+                <th>被探测设备的类型</th>
+                <th>信号强度</th>
+                <th>信道</th>
+                <th>报文类型</th>
+                <th>报文计数</th>
+                <th>报文计数</th>
+                <th>报文计数</th>
+                <th>报文计数</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>记录开始</th>
+                <th>记录结束</th>
+                <th>设备的ＭＡＣ地址</th>
+
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>excel.xlsx</td>
-                <td>excel</td>
-                <td>3</td>
-                <td></td>
+            <tr v-for="data in datas">
+                <td>{{data.id}}</td>
+                <td>{{data.mac}}</td>
+                <td>{{data.Mode}}</td>
+                <td>{{data.RSSI}}</td>
+                <td>{{data.Channel}}</td>
+                <td>{{data.PktType}}</td>
+                <td>{{data.FMgt}}</td>
+                <td>{{data.Fctl}}</td>
+                <td>{{data.Fdata}}</td>
+                <td>{{data.FMagic}}</td>
+                <td>{{data.stime | format}}</td>
+                <td>{{data.etime | format}}</td>
+                <td>{{data.slocal | format}}</td>
+                <td>{{data.elocal | format}}</td>
+                <td>{{data.dmac}}</td>
             </tr>
         </tbody>
     </table>
@@ -52,7 +75,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">文件上传</h4>
             </div>
             <div class="modal-body">
                 <input type="file" name="files[]" multiple id="fileupload">
@@ -63,8 +86,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             </div>
         </div>
     </div>

@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/upload', function(req, res, next) {
-    upload(req, res, function(data) {
+    upload(req, res, function(err, data) {
+        if (err) res.json(err);
         res.json(data);
     });
 });

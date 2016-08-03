@@ -1,4 +1,4 @@
-define(['vue', 'vue-router', 'vue-resource', 'routeMap', 'jquery', 'bootstrap', 'jquery.form','jquery.ui.widget', 'jquery.fileupload'], function(Vue, VueRouter, VueResource, routeMap, jquery, bootstrap, jf, jui,jfu) {
+define(['vue', 'vue-router', 'vue-resource', 'routeMap','date-format', 'jquery', 'bootstrap', 'jquery.form','jquery.ui.widget', 'jquery.fileupload'], function(Vue, VueRouter, VueResource, routeMap,dateFormat, jquery, bootstrap, jf, jui,jfu) {
 
     Vue.use(VueRouter);
     var App = Vue.extend({});
