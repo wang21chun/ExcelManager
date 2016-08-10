@@ -29,11 +29,10 @@ function typeCheck(body) {
     switch (body.type) {
         case 'probea':
         case 'probeb':
-       //     datas = probeab(baseField, body.data);
+            datas = probeab(baseField, body.data);
             break;
         case 'ap':
             datas = ap(baseField, body.data);
-            console.log(datas);
             break;
         case 'tag':
             datas = tag(baseField, body.data);
