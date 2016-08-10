@@ -1,0 +1,39 @@
+<div class="panel panel-primary" style="margin-top:48px;">
+    <div class="panel-heading">
+        <h3 class="panel-title">源始数据</h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-inline">
+            <div class="form-group">
+                <label class="control-label">选择需要展示的字段:</label>
+            </div>
+            <div class="checkbox" v-for="(k,v) in dataHead">
+                <label>
+                    <input type="checkbox" value="{{k}}" v-model="dataHeadShow[k]">{{v}}
+                </label>
+            </div>
+        </form>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th v-for="(k,v) in dataHead" v-show="dataHeadShow[k]">{{v}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="data in datas">
+                <!-- <td v-for="(k, v) in data">{{v}}</td> -->
+                <td v-show="dataHeadShow.sta">{{data.sta}}</td>
+                <td v-show="dataHeadShow.shop">{{data.shop}}</td>
+                <td v-show="dataHeadShow.token">{{data.token}}</td>
+                <td v-show="dataHeadShow.time">{{data.time  | format}}</td>
+                <td v-show="dataHeadShow.type">{{data.type}}</td>
+                <td v-show="dataHeadShow.mac">{{data.mac}}</td>
+                 <td v-show="dataHeadShow.rris">{{data.rris}}</td>
+                 <td v-show="dataHeadShow.channel">{{data.channel}}</td>
+                 <td v-show="dataHeadShow.ssid">{{data.ssid}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

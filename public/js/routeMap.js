@@ -10,6 +10,11 @@ define([], function() {
                         component: function(resolve) {
                             require(['files'], resolve);
                         }
+                    },
+                     '/zyc': {
+                        component: function(resolve) {
+                            require(['zyc'], resolve);
+                        }
                     }
                 }
             }
