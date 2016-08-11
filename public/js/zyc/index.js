@@ -6,27 +6,28 @@ define(['text!zycHtml'], function(_zycHtml) {
                 return {
                     datas: [],
                     dataHead: {
-                     
-                        'sta': '探针MAC地址',
+
+                        'mac': 'ＭＡＣ地址',
+                        'type': '类型',
                         'shop': 'shop ID',
                         'token': '探针秘钥',
                         'time': '时间',
-                        'type': '类型',
-                        'mac': 'ＭＡＣ地址',
-                        'rris':'rris',
-                        'channel':'信道',
-                        'ssid':'ssid'
+
+                        'rris': 'rris',
+                        'channel': '信道',
+                        'ssid': 'ssid',
+                        'sta': '探针MAC地址',
                     },
                     dataHeadShow: {
-                        'sta': true,
+                        'mac': true,
+                        'type': true,
                         'shop': true,
                         'token': true,
                         'time': true,
-                        'type': true,
-                        'mac': true,
-                        'rris':true,
-                        'channel':true,
-                        'ssid':true
+                        'rris': true,
+                        'channel': true,
+                        'ssid': true,
+                        'sta': true,
                     }
 
                 };
