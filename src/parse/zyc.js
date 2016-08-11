@@ -1,6 +1,7 @@
 var zycs = require('../core/zyc');
 var connect = require('../db/index');
 var _ = require('lodash');
+var extend = require('extend');
 module.exports = function(body) {
 
     var datas = typeCheck(body);
@@ -54,7 +55,6 @@ function probeab(baseField, data) {
     var macs = zycs.probeab(data);
     var length = macs.length;
     for (var i = 0; i < length; i++) {
-        var newField = _.clone(baseField);
         var buf = new Buffer(macs[i]);
         var rris = new Buffer(buf.length - 12);
         buf.copy(rris, 13, 0);
@@ -62,9 +62,10 @@ function probeab(baseField, data) {
         for (var j = 0; j < rris.length; j++) {
             rriss.push(rris[j])
         }
-        newField['rris'] = rriss;
-        newField['mac'] = buf.toString('utf8', 0, 12);
-        datas.push(newField);
+        var mac = buf.toString('utf8', 0, 12);
+        var _temp = {rris:rriss,mac:mac};
+        extend(_temp, baseField);
+        datas.push(_temp);
     }
     return datas;
 }
@@ -75,11 +76,9 @@ function ap(baseField, data) {
     for (var i = 0; i < aps.length; i++) {
         var newField = _.clone(baseField);
         var buf = new Buffer(aps[i]);
-        newField['rris'] = buf[12];
-        newField['channel'] = buf[13] - 50;
-        newField['ssid'] = buf.toString('utf8', 14, buf.length);
-        newField['mac'] = buf.toString('utf8', 0, 12);
-        datas.push(newField);
+        var _temp = {rris:buf[12],channel:buf[13] - 50, ssid:buf.toString('utf8', 14, buf.length),mac:buf.toString('utf8', 0, 12)};
+        extend(_temp, baseField);
+        datas.push(_temp);
     }
     return datas;
 }
