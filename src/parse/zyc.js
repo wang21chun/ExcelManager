@@ -1,7 +1,6 @@
 var zycs = require('../core/zyc');
 var connect = require('../db/index');
 var _ = require('lodash');
-var extend = require('extend');
 module.exports = function(body) {
 
     var datas = typeCheck(body);
@@ -64,7 +63,7 @@ function probeab(baseField, data) {
         }
         var mac = buf.toString('utf8', 0, 12);
         var _temp = {rris:rriss,mac:mac};
-        extend(_temp, baseField);
+        _.assign(_temp, baseField);
         datas.push(_temp);
     }
     return datas;
@@ -77,7 +76,7 @@ function ap(baseField, data) {
         var newField = _.clone(baseField);
         var buf = new Buffer(aps[i]);
         var _temp = {rris:buf[12],channel:buf[13] - 50, ssid:buf.toString('utf8', 14, buf.length),mac:buf.toString('utf8', 0, 12)};
-        extend(_temp, baseField);
+        _.assign(_temp, baseField);
         datas.push(_temp);
     }
     return datas;
