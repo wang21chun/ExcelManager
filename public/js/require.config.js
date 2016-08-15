@@ -25,6 +25,7 @@ require.config({
             'text': 'lib/requirejs/text'
         }
     },
+    deps: ['jquery'],
     // enforceDefine: true,
     urlArgs: 'v=' + new Date().getTime()
 });
