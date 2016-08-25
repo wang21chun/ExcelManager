@@ -11,4 +11,3 @@ module.exports = function(callback) {
 /*rebase first*/
 /***/
 /*edit start....*/
-/***/
